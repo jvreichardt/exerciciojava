@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimentos JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>💻 Experimentos JavaScript</h1>
+    <p>Projeto de programação com arrays, objetos e funções</p>
+</header>
+
+<nav>
+    <button onclick="mostrar('produtos')">Experimento 1</button>
+    <button onclick="mostrar('alunos')">Experimento 2</button>
+    <button onclick="mostrar('loja')">Experimento 3</button>
+    <button onclick="mostrar('banco')">Experimento 4</button>
+</nav>
+
+<main>
+
+<!-- EXPERIMENTO 1 -->
+<section id="produtos" class="tela ativa">
+    <h2>Experimento 1 - Produtos</h2>
+    <p>Cadastro, filtragem e cálculo do valor em estoque.</p>
+
+    <form id="formProduto">
+        <input id="nomeProduto" placeholder="Nome do produto" required>
+        <input id="precoProduto" type="number" min="0.01" step="0.01" placeholder="Preço" required>
+        <input id="estoqueProduto" type="number" min="0" step="1" placeholder="Estoque" required>
+        <button type="submit">Cadastrar produto</button>
+    </form>
+
+    <div id="listaProdutos"></div>
+    <div id="resumoProdutos"></div>
+</section>
+
+<!-- EXPERIMENTO 2 -->
+<section id="alunos" class="tela">
+    <h2>Experimento 2 - Gerenciamento de Alunos</h2>
+    <p>Cadastro de alunos, notas e cálculo de médias.</p>
+
+    <form id="formAluno">
+        <input id="nomeAluno" placeholder="Nome do aluno" required>
+        <input id="idadeAluno" type="number" min="1" placeholder="Idade" required>
+        <input id="cursoAluno" placeholder="Curso" required>
+        <input id="notasAluno" placeholder="Notas (ex: 8,7,9)" required>
+        <button type="submit">Cadastrar aluno</button>
+    </form>
+
+    <div id="listaAlunos"></div>
+    <div id="resumoAlunos"></div>
+</section>
+
+<!-- EXPERIMENTO 3 -->
+<section id="loja" class="tela">
+    <h2>Experimento 3 - Loja Virtual</h2>
+    <p>Gerenciamento de produtos, categorias e compras.</p>
+
+    <form id="formLoja">
+        <input id="nomeLoja" placeholder="Nome do produto" required>
+        <input id="categoriaLoja" placeholder="Categoria" required>
+        <input id="precoLoja" type="number" min="0.01" step="0.01" placeholder="Preço" required>
+        <input id="estoqueLoja" type="number" min="0" step="1" placeholder="Estoque" required>
+        <button type="submit">Adicionar à loja</button>
+    </form>
+
+    <input id="filtroCategoria" placeholder="Buscar por categoria" oninput="renderLoja()">
+
+    <div id="listaLoja"></div>
+    <div id="resumoLoja"></div>
+</section>
+
+<!-- EXPERIMENTO 4 -->
+<section id="banco" class="tela">
+    <h2>Experimento 4 - Banco Digital</h2>
+    <p>Simulação de uma conta bancária.</p>
+
+    <div class="saldo">
+        <h3>Saldo disponível</h3>
+        <h1 id="saldoAtual">R$ 0,00</h1>
+    </div>
+
+    <form id="formBanco">
+        <input id="valorBanco" type="number" min="0.01" step="0.01" placeholder="Valor da movimentação" required>
+        <button type="button" onclick="depositar()">Depositar</button>
+        <button type="button" onclick="sacar()">Sacar</button>
+    </form>
+
+    <div id="resumoBanco"></div>
+    <div id="extrato"></div>
+</section>
+
+</main>
+
+<footer>
+    <p>Projeto acadêmico - Experimentos JavaScript</p>
+    <p>Desenvolvido com HTML, CSS e JavaScript</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
