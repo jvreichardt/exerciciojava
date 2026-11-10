@@ -1,7 +1,4 @@
 
-// ==========================================
-// FUNÇÕES GERAIS
-// ==========================================
 
 function mostrar(tela) {
     document.querySelectorAll(".tela").forEach(item => {
@@ -29,10 +26,6 @@ function escapar(texto) {
 }
 
 
-// ==========================================
-// EXPERIMENTO 1 - PRODUTOS
-// ==========================================
-
 let produtos = [
     { nome: "Notebook", preco: 3500, estoque: 5 },
     { nome: "Mouse", preco: 80, estoque: 10 },
@@ -41,31 +34,26 @@ let produtos = [
     { nome: "Headset", preco: 250, estoque: 4 }
 ];
 
-// Filtrar produtos disponíveis
 function produtosDisponiveis() {
     return produtos.filter(p => p.estoque > 0);
 }
 
-// Gerar lista somente com nomes
 function nomesProdutos() {
     return produtosDisponiveis().map(p => p.nome);
 }
 
-// Calcular valor total do estoque
 function valorTotalEstoque() {
     return produtos.reduce((total, p) => {
         return total + (p.preco * p.estoque);
     }, 0);
 }
 
-// Encontrar produto mais caro
 function produtoMaisCaro(lista) {
     return lista.reduce((maior, atual) =>
         atual.preco > maior.preco ? atual : maior
     );
 }
 
-// Cadastrar produto
 document.getElementById("formProduto").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -115,10 +103,6 @@ function renderProdutos() {
 }
 
 
-// ==========================================
-// EXPERIMENTO 2 - ALUNOS
-// ==========================================
-
 let alunos = [
     { nome: "Maria", idade: 20, curso: "Informática", notas: [8, 9, 7] },
     { nome: "João", idade: 22, curso: "Administração", notas: [5, 6, 5] },
@@ -126,7 +110,6 @@ let alunos = [
     { nome: "Pedro", idade: 21, curso: "Programação", notas: [3, 4, 5] }
 ];
 
-// Calcular média
 function calcularMedia(aluno) {
     if (!aluno.notas.length) return 0;
 
@@ -134,7 +117,6 @@ function calcularMedia(aluno) {
         / aluno.notas.length;
 }
 
-// Identificar situação
 function situacaoAluno(aluno) {
     const media = calcularMedia(aluno);
 
@@ -147,7 +129,6 @@ function situacaoAluno(aluno) {
     }
 }
 
-// Encontrar alunos aprovados
 function alunosAprovados() {
     return alunos.filter(a => situacaoAluno(a) === "Aprovado");
 }
@@ -157,7 +138,6 @@ function buscarAluno(nome) {
     );
 }
 
-// Encontrar aluno com maior média
 function melhorAluno() {
     return alunos.length
         ? alunos.reduce((melhor, atual) =>
@@ -166,7 +146,6 @@ function melhorAluno() {
         : null;
 }
 
-// Calcular média geral da turma
 function mediaTurma() {
     if (!alunos.length) return 0;
 
@@ -175,7 +154,6 @@ function mediaTurma() {
     ) / alunos.length;
 }
 
-// Cadastrar aluno
 document.getElementById("formAluno").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -233,9 +211,8 @@ function renderAlunos() {
 }
 
 
-// ==========================================
 // EXPERIMENTO 3 - LOJA VIRTUAL
-// ==========================================
+
 
 let estoqueLoja = [
     { nome: "Celular", categoria: "Eletrônicos", preco: 1800, estoque: 10 },
@@ -245,21 +222,18 @@ let estoqueLoja = [
     { nome: "Mochila", categoria: "Acessórios", preco: 120, estoque: 8 }
 ];
 
-// Buscar produtos por categoria
 function buscarCategoria(categoria) {
     return estoqueLoja.filter(p =>
         p.categoria.toLowerCase().includes(categoria.toLowerCase())
     );
 }
 
-// Calcular valor total do estoque
 function calcularEstoqueLoja() {
     return estoqueLoja.reduce((total, p) =>
         total + p.preco * p.estoque, 0
     );
 }
 
-// Encontrar produto mais caro
 function maisCaroLoja() {
     return estoqueLoja.length
         ? estoqueLoja.reduce((maior, p) =>
@@ -268,7 +242,6 @@ function maisCaroLoja() {
         : null;
 }
 
-// Realizar compra
 function comprarProduto(indice) {
     const produto = estoqueLoja.find((p, i) => i === indice);
 
@@ -284,7 +257,6 @@ function comprarProduto(indice) {
     renderLoja();
 }
 
-// Cadastrar produto na loja
 document.getElementById("formLoja").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -350,10 +322,7 @@ function renderLoja() {
     `;
 }
 
-
-// ==========================================
 // EXPERIMENTO 4 - BANCO DIGITAL
-// ==========================================
 
 const conta = {
     titular: "Maria Silva",
@@ -361,7 +330,6 @@ const conta = {
     movimentacoes: []
 };
 
-// Depositar
 function depositar() {
     const valor = Number(document.getElementById("valorBanco").value);
 
@@ -383,7 +351,6 @@ function depositar() {
     renderBanco();
 }
 
-// Sacar
 function sacar() {
     const valor = Number(document.getElementById("valorBanco").value);
 
@@ -410,21 +377,18 @@ function sacar() {
     renderBanco();
 }
 
-// Calcular total de depósitos
 function totalDepositos() {
     return conta.movimentacoes
         .filter(m => m.tipo === "Depósito")
         .reduce((total, m) => total + m.valor, 0);
 }
 
-// Calcular total de saques
 function totalSaques() {
     return conta.movimentacoes
         .filter(m => m.tipo === "Saque")
         .reduce((total, m) => total + m.valor, 0);
 }
 
-// Encontrar maior movimentação
 function maiorMovimentacao() {
     return conta.movimentacoes.length
         ? conta.movimentacoes.reduce((maior, atual) =>
@@ -433,7 +397,6 @@ function maiorMovimentacao() {
         : null;
 }
 
-// Exibir saldo e extrato
 function renderBanco() {
     const maior = maiorMovimentacao();
 
@@ -466,9 +429,9 @@ function renderBanco() {
 }
 
 
-// ==========================================
-// INICIALIZAÇÃO DO SISTEMA
-// ==========================================
+
+
+
 
 renderProdutos();
 renderAlunos();
